@@ -8,12 +8,12 @@ var banner =
   " */\n";
 
 module.exports = {
-  entry: "./src/VueMarkdown.js",
+  entry: "./src/VueChart.js",
   target: "node",
   output: {
     path: "./dist",
-    filename: "vue-markdown.common.js",
-    library: "VueMarkdown",
+    filename: "vue-chart.common.js",
+    library: "VueChart",
     libraryTarget: "umd"
   },
   externals: /^[^.]/,

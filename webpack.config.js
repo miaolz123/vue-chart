@@ -11,8 +11,8 @@ module.exports = {
   entry: './src/build.js',
   output: {
     path: './dist',
-    filename: 'vue-markdown.js',
-    library: 'VueMarkdown',
+    filename: 'vue-chart.js',
+    library: 'VueChart',
     libraryTarget: 'umd'
   },
   plugins: [
