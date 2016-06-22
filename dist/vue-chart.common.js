@@ -1,19 +1,19 @@
 /**
- * vue-chart v0.1.0
+ * vue-chart v1.0.0
  * https://github.com/miaolz123/vue-chart
  * MIT License
  */
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("babel-runtime/core-js/object/assign"), require("chart.js"));
+		module.exports = factory(require("chart.js"));
 	else if(typeof define === 'function' && define.amd)
-		define(["babel-runtime/core-js/object/assign", "chart.js"], factory);
+		define(["chart.js"], factory);
 	else if(typeof exports === 'object')
-		exports["VueChart"] = factory(require("babel-runtime/core-js/object/assign"), require("chart.js"));
+		exports["VueChart"] = factory(require("chart.js"));
 	else
-		root["VueChart"] = factory(root["babel-runtime/core-js/object/assign"], root["chart.js"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__) {
+		root["VueChart"] = factory(root["chart.js"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -66,61 +66,61 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _assign = __webpack_require__(1);
-
-	var _assign2 = _interopRequireDefault(_assign);
-
-	var _chart = __webpack_require__(2);
+	var _chart = __webpack_require__(1);
 
 	var _chart2 = _interopRequireDefault(_chart);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
-	  template: '<canvas :width="width" :height="height"></canvas>',
+	  template: '<canvas></canvas>',
 	  props: {
-	    width: {
-	      type: Number,
-	      default: 400
+	    type: {
+	      type: String,
+	      default: 'line'
 	    },
-	    height: {
-	      type: Number,
-	      default: 250
+	    data: {
+	      type: Object,
+	      default: function _default() {
+	        return {
+	          labels: [],
+	          datasets: []
+	        };
+	      }
 	    },
-	    title: {
+	    options: {
 	      type: Object
 	    }
 	  },
-	  data: function data() {
-	    return {
-	      defaultTitle: {
-	        display: true,
-	        text: 'My VueChart'
-	      }
-	    };
-	  },
 	  ready: function ready() {
+	    var _this = this;
+
 	    /* eslint-disable no-new */
-	    var thisChart = new _chart2.default(this.$el, {
-	      type: 'bar',
-	      data: {
-	        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-	        datasets: [{
-	          label: '# of Votes',
-	          data: [12, 19, 3, 5, 2, 3]
-	        }]
-	      },
-	      options: {
-	        responsive: false,
-	        title: (0, _assign2.default)({}, this.defaultTitle, this.title),
-	        scales: {
-	          yAxes: [{
-	            ticks: {
-	              beginAtZero: true
-	            }
-	          }]
-	        }
-	      }
+	    new _chart2.default(this.$el, {
+	      type: this.type,
+	      data: this.data,
+	      options: this.options
+	    });
+	    this.$watch('type', function () {
+	      new _chart2.default(_this.$el, {
+	        type: _this.type,
+	        data: _this.data,
+	        options: _this.options
+	      });
+	    });
+	    this.$watch('data', function () {
+	      new _chart2.default(_this.$el, {
+	        type: _this.type,
+	        data: _this.data,
+	        options: _this.options
+	      });
+	    });
+	    this.$watch('options', function () {
+	      new _chart2.default(_this.$el, {
+	        type: _this.type,
+	        data: _this.data,
+	        options: _this.options
+	      });
 	    });
 	  }
 	};
@@ -130,12 +130,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
 /***/ }
 /******/ ])

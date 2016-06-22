@@ -1,48 +1,50 @@
 import Chart from 'chart.js'
 
 export default {
-  template: '<canvas :width="width" :height="height"></canvas>',
+  template: '<canvas></canvas>',
   props: {
-    width: {
-      type: Number,
-      default: 400,
+    type: {
+      type: String,
+      default: 'line',
     },
-    height: {
-      type: Number,
-      default: 250,
+    data: {
+      type: Object,
+      default: () => ({
+        labels: [],
+        datasets: [],
+      }),
     },
-    title: {
+    options: {
       type: Object,
     },
   },
-  data: () => ({
-    defaultTitle: {
-      display: true,
-      text: 'My VueChart',
-    },
-  }),
   ready() {
     /* eslint-disable no-new */
-    const thisChart = new Chart(this.$el, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3]
-        }]
-      },
-      options: {
-        responsive: false,
-        title: Object.assign({}, this.defaultTitle, this.title),
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }],
-        },
-      },
+    new Chart(this.$el, {
+      type: this.type,
+      data: this.data,
+      options: this.options,
+    })
+    this.$watch('type', () => {
+      new Chart(this.$el, {
+        type: this.type,
+        data: this.data,
+        options: this.options,
+      })
+    })
+    this.$watch('data', () => {
+      new Chart(this.$el, {
+        type: this.type,
+        data: this.data,
+        options: this.options,
+      })
+    })
+    this.$watch('options', () => {
+      new Chart(this.$el, {
+        type: this.type,
+        data: this.data,
+        options: this.options,
+      })
     })
   },
 }
