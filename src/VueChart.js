@@ -18,32 +18,31 @@ export default {
       type: Object,
     },
   },
+  data: () => ({
+    chart: null,
+  }),
   ready() {
-    /* eslint-disable no-new */
-    new Chart(this.$el, {
+    this.chart = new Chart(this.$el, {
       type: this.type,
       data: this.data,
       options: this.options,
     })
     this.$watch('type', () => {
-      new Chart(this.$el, {
-        type: this.type,
-        data: this.data,
-        options: this.options,
+      this.chart.config.type = this.type
+      this.$nextTick(() => {
+        this.chart.update()
       })
     })
     this.$watch('data', () => {
-      new Chart(this.$el, {
-        type: this.type,
-        data: this.data,
-        options: this.options,
+      this.chart.config.data = this.data
+      this.$nextTick(() => {
+        this.chart.update()
       })
     })
     this.$watch('options', () => {
-      new Chart(this.$el, {
-        type: this.type,
-        data: this.data,
-        options: this.options,
+      this.chart.config.options = this.options
+      this.$nextTick(() => {
+        this.chart.update()
       })
     })
   },

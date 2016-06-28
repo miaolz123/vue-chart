@@ -1,5 +1,5 @@
 /**
- * vue-chart v1.0.0
+ * vue-chart v1.0.1
  * https://github.com/miaolz123/vue-chart
  * MIT License
  */
@@ -113,34 +113,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	      type: Object
 	    }
 	  },
+	  data: function data() {
+	    return {
+	      chart: null
+	    };
+	  },
 	  ready: function ready() {
 	    var _this = this;
 
-	    /* eslint-disable no-new */
-	    new _chart2.default(this.$el, {
+	    this.chart = new _chart2.default(this.$el, {
 	      type: this.type,
 	      data: this.data,
 	      options: this.options
 	    });
 	    this.$watch('type', function () {
-	      new _chart2.default(_this.$el, {
-	        type: _this.type,
-	        data: _this.data,
-	        options: _this.options
+	      _this.chart.config.type = _this.type;
+	      _this.$nextTick(function () {
+	        _this.chart.update();
 	      });
 	    });
 	    this.$watch('data', function () {
-	      new _chart2.default(_this.$el, {
-	        type: _this.type,
-	        data: _this.data,
-	        options: _this.options
+	      _this.chart.config.data = _this.data;
+	      _this.$nextTick(function () {
+	        _this.chart.update();
 	      });
 	    });
 	    this.$watch('options', function () {
-	      new _chart2.default(_this.$el, {
-	        type: _this.type,
-	        data: _this.data,
-	        options: _this.options
+	      _this.chart.config.options = _this.options;
+	      _this.$nextTick(function () {
+	        _this.chart.update();
 	      });
 	    });
 	  }

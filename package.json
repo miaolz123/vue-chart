@@ -1,6 +1,6 @@
 {
   "name": "vue-chart",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Powerful and Highspeed Markdown Parser for Vue",
   "main": "dist/vue-chart.common.js",
   "files": [
