@@ -10,6 +10,8 @@ A Powerful and Highspeed Chart Parser for Vue.
 
 [DEMO](//miaolz123.github.io/vue-chart/)
 
+![](//miaolz123.github.io/vue-chart/dist/demo.png)
+
 # Instllation
 
 ### Browser globals
@@ -18,7 +20,7 @@ A Powerful and Highspeed Chart Parser for Vue.
 
 ```html
 <body>
-  <vue-chart source="i am a ~~tast~~ **test**."></vue-chart>
+  <vue-chart type="line" :data="myData" :options="myOptions"></vue-chart>
 </body>
 <script src="path/to/vue.js"></script>
 <script src="path/to/vue-chart.js"></script>
@@ -64,7 +66,7 @@ new Vue({
 
 | Prop | Type | Default |
 | ---- | ---- | ------- |
-| type | String | `title="line"` |
+| type | String | `type="line"` |
 | data | Object | [DOCS](//www.chartjs.org/docs/#line-chart-data-structure) |
 | options | Object | [DOCS](//www.chartjs.org/docs/#chart-configuration) |
 

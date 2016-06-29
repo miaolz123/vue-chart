@@ -1,4 +1,5 @@
 import Chart from 'chart.js'
+import assign from 'lodash.assign'
 
 export default {
   template: '<canvas></canvas>',
@@ -27,20 +28,20 @@ export default {
       data: this.data,
       options: this.options,
     })
-    this.$watch('type', () => {
-      this.chart.config.type = this.type
-      this.$nextTick(() => {
-        this.chart.update()
-      })
-    })
     this.$watch('data', () => {
-      this.chart.config.data = this.data
+      if (this.data.datasets && this.data.datasets.length > 0) {
+        this.data.datasets.map((dataset, i) => {
+          if (i === this.chart.config.data.datasets.length) return
+          this.data.datasets[i] = assign(this.chart.config.data.datasets[i], dataset)
+        })
+      }
+      this.chart.config.data = assign(this.chart.config.data, this.data)
       this.$nextTick(() => {
         this.chart.update()
       })
     })
     this.$watch('options', () => {
-      this.chart.config.options = this.options
+      this.chart.config.options = assign(this.chart.config.options, this.options)
       this.$nextTick(() => {
         this.chart.update()
       })

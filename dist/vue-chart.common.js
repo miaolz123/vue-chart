@@ -1,19 +1,19 @@
 /**
- * vue-chart v1.0.1
+ * vue-chart v1.1.0
  * https://github.com/miaolz123/vue-chart
  * MIT License
  */
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("chart.js"));
+		module.exports = factory(require("chart.js"), require("lodash.assign"));
 	else if(typeof define === 'function' && define.amd)
-		define(["chart.js"], factory);
+		define(["chart.js", "lodash.assign"], factory);
 	else if(typeof exports === 'object')
-		exports["VueChart"] = factory(require("chart.js"));
+		exports["VueChart"] = factory(require("chart.js"), require("lodash.assign"));
 	else
-		root["VueChart"] = factory(root["chart.js"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+		root["VueChart"] = factory(root["chart.js"], root["lodash.assign"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,6 +70,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _chart2 = _interopRequireDefault(_chart);
 
+	var _lodash = __webpack_require__(2);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
@@ -105,20 +109,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      data: this.data,
 	      options: this.options
 	    });
-	    this.$watch('type', function () {
-	      _this.chart.config.type = _this.type;
-	      _this.$nextTick(function () {
-	        _this.chart.update();
-	      });
-	    });
 	    this.$watch('data', function () {
-	      _this.chart.config.data = _this.data;
+	      if (_this.data.datasets && _this.data.datasets.length > 0) {
+	        _this.data.datasets.map(function (dataset, i) {
+	          if (i === _this.chart.config.data.datasets.length) return;
+	          _this.data.datasets[i] = (0, _lodash2.default)(_this.chart.config.data.datasets[i], dataset);
+	        });
+	      }
+	      _this.chart.config.data = (0, _lodash2.default)(_this.chart.config.data, _this.data);
 	      _this.$nextTick(function () {
 	        _this.chart.update();
 	      });
 	    });
 	    this.$watch('options', function () {
-	      _this.chart.config.options = _this.options;
+	      _this.chart.config.options = (0, _lodash2.default)(_this.chart.config.options, _this.options);
 	      _this.$nextTick(function () {
 	        _this.chart.update();
 	      });
@@ -131,6 +135,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
 /***/ }
 /******/ ])
