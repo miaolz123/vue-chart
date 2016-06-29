@@ -10,7 +10,7 @@ A Powerful and Highspeed Chart Parser for Vue.
 
 [DEMO](//miaolz123.github.io/vue-chart/)
 
-![](//miaolz123.github.io/vue-chart/dist/demo.png)
+![](https://miaolz123.github.io/vue-chart/dist/demo.png)
 
 # Instllation
 
