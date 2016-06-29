@@ -8,47 +8,38 @@
 </head>
 
 <body>
-  <h2>Line</h2>
-  <vue-chart type="line" :data="data"></vue-chart>
+  <vue-chart type="doughnut" :data="data"></vue-chart>
   <br>
-  <h2>Bar</h2>
-  <vue-chart type="bar" :data="data"></vue-chart>
-  <br>
-  <h2>Radar</h2>
-  <vue-chart type="radar" :data="data"></vue-chart>
-  <br>
-  <p>
-    Powered by <a href="//github.com/miaolz123/vue-chart" target="_blank">VueChart</a>
+  <p style="text-align:center">
+    REMAIN: {{ data.datasets[0].data[0] }}, LEAVE: {{ data.datasets[0].data[1] }}
+    & Powered by <a href="//github.com/miaolz123/vue-chart" target="_blank">VueChart</a>
   </p>
-  <script src="dist/vue.min.js"></script>
-  <script src="dist/vue-chart.min.js"></script>
+  <script src="dist/vue.js"></script>
+  <script src="dist/vue-chart.js"></script>
   <script>
     Vue.use(VueChart);
     var vm = new Vue({
       el: "body",
       data: {
         data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May","Jun"],
+          labels: ["REMAIN", "LEAVE"],
           datasets: [{
-            label: "user",
-            backgroundColor: "rgba(255,99,132,0.2)",
-            borderColor: "rgba(255,99,132,1)",
-            pointBackgroundColor: "rgba(255,99,132,1)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(255,99,132,1)",
-            data: [15, 20, 22, 22, 28, 37]
-          }, {
-            label: "view",
-            backgroundColor: "rgba(179,181,198,0.2)",
-            borderColor: "rgba(179,181,198,1)",
-            pointBackgroundColor: "rgba(179,181,198,1)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgba(179,181,198,1)",
-            data: [150, 200, 220, 220, 280, 370]
-          }],
-        },
+            backgroundColor: ["#36A2EB", "#FF6384"],
+            data: [1, 1]
+          }]
+        }
+      },
+      ready() {
+        var root = this;
+        var refresh = function() {
+          var data = root.data.datasets[0].data;
+          var vote = Math.floor(Math.random() * 10);
+          data[vote % 2] += vote;
+          root.data = {
+            datasets: [{ data: data }],
+          };
+        };
+        setInterval(refresh, 3000);
       },
     });
   </script>

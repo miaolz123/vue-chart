@@ -1,72 +1,57 @@
 # vue-chart
 
-[![npm](https://img.shields.io/npm/v/vue-chart.svg?style=flat)](https://www.npmjs.com/package/vue-chart)
-[![npm](https://img.shields.io/npm/l/vue-chart.svg?style=flat)](https://www.npmjs.com/package/vue-chart)
-[![npm](https://img.shields.io/npm/dt/vue-chart.svg?style=flat)](https://www.npmjs.com/package/vue-chart)
-
-A Powerful and Highspeed Chart Parser for Vue.
-
-# Example
-
-[DEMO](//miaolz123.github.io/vue-chart/)
-
-# Instllation
-
-### Browser globals
-
-> The **dist** folder contains `vue-chart.js` and `vue-chart.min.js` with the component exported in the `window.VueChart` object. 
+This is a [Example Demo](//miaolz123.github.io/vue-chart/) of vue-chart
 
 ```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>vue-chart</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
 <body>
-  <vue-chart source="i am a ~~tast~~ **test**."></vue-chart>
-</body>
-<script src="path/to/vue.js"></script>
-<script src="path/to/vue-chart.js"></script>
-<script>
+  <vue-chart type="doughnut" :data="data"></vue-chart>
+  <br>
+  <p style="text-align:center">
+    REMAIN: {{ data.datasets[0].data[0] }}, LEAVE: {{ data.datasets[0].data[1] }}
+    & Powered by <a href="//github.com/miaolz123/vue-chart" target="_blank">VueChart</a>
+  </p>
+  <script src="dist/vue.js"></script>
+  <script src="dist/vue-chart.js"></script>
+  <script>
     Vue.use(VueChart);
     var vm = new Vue({
-        el: "body"
+      el: "body",
+      data: {
+        data: {
+          labels: ["REMAIN", "LEAVE"],
+          datasets: [{
+            backgroundColor: ["#36A2EB", "#FF6384"],
+            data: [1, 1]
+          }]
+        }
+      },
+      ready() {
+        var root = this;
+        var refresh = function() {
+          var data = root.data.datasets[0].data;
+          var vote = Math.floor(Math.random() * 10);
+          data[vote % 2] += vote;
+          root.data = {
+            datasets: [{ data: data }],
+          };
+        };
+        setInterval(refresh, 3000);
+      },
     });
-</script>
+  </script>
+</body>
+
+</html>
 ```
-
-### NPM
-
-```shell
-$ npm install --save vue-chart
-```
-
-## CommonJS
-
-```js
-var VueChart = require('vue-chart');
-
-new Vue({
-  components: {
-    'vue-chart': VueChart
-  }
-})
-```
-
-## ES6
-
-```js
-import VueChart from 'vue-chart'
-
-new Vue({
-  components: {
-    VueChart
-  }
-})
-```
-
-# Props
-
-| Prop | Type | Default |
-| ---- | ---- | ------- |
-| type | String | `title="line"` |
-| data | Object | [DOCS](//www.chartjs.org/docs/#line-chart-data-structure) |
-| options | Object | [DOCS](//www.chartjs.org/docs/#chart-configuration) |
 
 # License
 
