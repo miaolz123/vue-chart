@@ -23,17 +23,13 @@ A Powerful and Highspeed Chart Parser for Vue.
 <script src="path/to/vue.js"></script>
 <script src="path/to/vue-chart.js"></script>
 <script>
-    Vue.use(VueChart);
     var vm = new Vue({
-        el: "body"
+        el: "body",
+         components: {
+            VueChart
+          }
     });
 </script>
-```
-
-### NPM
-
-```shell
-$ npm install --save vue-chart
 ```
 
 ## CommonJS
