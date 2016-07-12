@@ -8,15 +8,13 @@ A Powerful and Highspeed Chart Parser for Vue.
 
 # Example
 
-[DEMO](//miaolz123.github.io/vue-chart/)
 
-![](https://miaolz123.github.io/vue-chart/dist/demo.png)
 
 # Instllation
 
 ### Browser globals
 
-> The **dist** folder contains `vue-chart.js` and `vue-chart.min.js` with the component exported in the `window.VueChart` object. 
+> The **dist** folder contains `vue-chart.js` and `vue-chart.min.js` with the component exported in the `window.VueChart` object.
 
 ```html
 <body>
@@ -50,6 +48,18 @@ new Vue({
 })
 ```
 
+## js
+
+```js
+// <script src="dist/vue-chart.js"></script>
+
+new Vue({
+  components: {
+    VueChart
+  }
+})
+```
+
 ## ES6
 
 ```js
@@ -69,7 +79,8 @@ new Vue({
 | type | String | `type="line"` |
 | data | Object | [DOCS](//www.chartjs.org/docs/#line-chart-data-structure) |
 | options | Object | [DOCS](//www.chartjs.org/docs/#chart-configuration) |
+[Chartjs](http://www.chartjs.org/docs/)
 
 # License
 
-Copyright (c) 2016 [miaolz123](https://github.com/miaolz123) by [MIT](https://opensource.org/licenses/MIT)
+Copyright (c) 2016

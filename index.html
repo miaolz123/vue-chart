@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<script src="dist/vue.min.js"></script>
+<script src="dist/vue-chart.js"></script>
+<style>
+
+  .btn {
+    padding: 10px;
+    cursor: pointer;
+    width: auto;
+    float: left;
+    margin: 5px;
+    border-radius: 6px;
+    background: #0086b3;
+    color: #fff;
+    font-size: 12px;
+
+  }
+
+  .btn:hover {
+    background: #006600;
+
+  }
+</style>
+<body>
+<div @click="update([10,20,30,40])" class="btn"> update([10,20,30,40])</div>
+<div @click="update([50,20,10,20])" class="btn"> update([50,20,10,20])</div>
+<vue-chart type="doughnut" :data="data" :options="options"></vue-chart>
+
+</body>
+<script>
+  //Vue.use(VueChart);
+  //console.log(VueChart)
+  var vm = new Vue({
+    el: "body",
+    data: {
+      data: {
+        labels: ["A", "B", "C", "D"],
+        datasets: [{
+          backgroundColor: ["#FF6384",
+            "#36A2EB",
+            "#FFCE56", '#008080'],
+          hoverBackgroundColor: [
+
+            "#999",
+            "#999", "#999", "#999"
+          ],
+          data: [1, 1, 1, 1]
+        }]
+      },
+      options: {
+        animation: {duration: 500}, rotation: -1.2 * Math.PI,
+        tooltips: {mode: 'label', enabled: true},
+        legend: {
+          display: true,
+          labels: {
+            fontColor: 'rgb(255, 99, 132)'
+          }
+        }
+      }
+    },
+    methods: {
+      update: function (values) {
+        this.data = {
+          datasets: [{data: values}]
+        }
+      }
+    },
+    components: {VueChart}
+  });
+</script>
+</html>
