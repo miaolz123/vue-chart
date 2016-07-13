@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
-<script src="dist/vue.min.js"></script>
+<script src="dist/vue.js"></script>
 <script src="dist/vue-chart.js"></script>
 <style>
 
@@ -29,12 +29,12 @@
 <body>
 <div @click="update([10,20,30,40])" class="btn"> update([10,20,30,40])</div>
 <div @click="update([50,20,10,20])" class="btn"> update([50,20,10,20])</div>
+<div @click="updateOptionsTitle('new title')" class="btn"> updateOptionsTitle</div>
+<div @click="updateOptionsTitle('new title 2')" class="btn"> updateOptionsTitle</div>
 <vue-chart type="doughnut" :data="data" :options="options"></vue-chart>
 
 </body>
 <script>
-  //Vue.use(VueChart);
-  //console.log(VueChart)
   var vm = new Vue({
     el: "body",
     data: {
@@ -45,7 +45,6 @@
             "#36A2EB",
             "#FFCE56", '#008080'],
           hoverBackgroundColor: [
-
             "#999",
             "#999", "#999", "#999"
           ],
@@ -53,21 +52,26 @@
         }]
       },
       options: {
-        animation: {duration: 500}, rotation: -1.2 * Math.PI,
+        animation: {duration: 500}, rotation: -0.5 * Math.PI,
         tooltips: {mode: 'label', enabled: true},
+        title: {
+          display: true,
+          text: 'Custom Chart Title'
+        },
         legend: {
           display: true,
           labels: {
-            fontColor: 'rgb(255, 99, 132)'
+            fontColor: '#666'
           }
         }
       }
     },
     methods: {
       update: function (values) {
-        this.data = {
-          datasets: [{data: values}]
-        }
+      this.data.datasets[0].data = values;
+      },
+      updateOptionsTitle: function (title) {
+        this.options.title.text = title;
       }
     },
     components: {VueChart}

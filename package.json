@@ -52,6 +52,6 @@
   },
   "dependencies": {
     "chart.js": "^2.1.6",
-    "lodash.assign": "^4.0.9"
+    "underscore":"^1.7.0"
   }
 }
