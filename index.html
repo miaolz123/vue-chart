@@ -27,10 +27,8 @@
   }
 </style>
 <body>
-<div @click="update([10,20,30,40])" class="btn"> update([10,20,30,40])</div>
-<div @click="update([50,20,10,20])" class="btn"> update([50,20,10,20])</div>
-<div @click="updateOptionsTitle('new title')" class="btn"> updateOptionsTitle</div>
-<div @click="updateOptionsTitle('new title 2')" class="btn"> updateOptionsTitle</div>
+<div @click="update()" class="btn">update</div>
+<div @click="updateOptionsTitle()" class="btn"> updateOptionsTitle</div>
 <vue-chart type="doughnut" :data="data" :options="options"></vue-chart>
 
 </body>
@@ -41,6 +39,24 @@
       data: {
         labels: ["A", "B", "C", "D"],
         datasets: [{
+          backgroundColor: ["#FF6384",
+            "#36A2EB",
+            "#FFCE56", '#008080'],
+          hoverBackgroundColor: [
+            "#999",
+            "#999", "#999", "#999"
+          ],
+          data: [1, 1, 1, 1]
+        }, {
+          backgroundColor: ["#FF6384",
+            "#36A2EB",
+            "#FFCE56", '#008080'],
+          hoverBackgroundColor: [
+            "#999",
+            "#999", "#999", "#999"
+          ],
+          data: [1, 1, 1, 1]
+        }, {
           backgroundColor: ["#FF6384",
             "#36A2EB",
             "#FFCE56", '#008080'],
@@ -68,10 +84,12 @@
     },
     methods: {
       update: function (values) {
-      this.data.datasets[0].data = values;
+        for(var i=0;i<this.data.datasets.length;i++){
+          this.data.datasets[i].data = [Math.random(),Math.random(),Math.random(),Math.random()];
+        }
       },
-      updateOptionsTitle: function (title) {
-        this.options.title.text = title;
+      updateOptionsTitle: function () {
+        this.options.title.text = 'title:'+Math.random();
       }
     },
     components: {VueChart}

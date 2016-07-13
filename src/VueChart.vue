@@ -22,10 +22,11 @@
   }
 
   function getVal(newVal, oldVal) {
-    return _.isEqual(newVal, oldVal) ? oldVal : maxExtentd(oldVal, newVal)
+    return _.isEqual(newVal, oldVal) ? oldVal : maxExtend(oldVal, newVal)
+
   }
 
-  function maxExtentd(destination, sources) {
+  function maxExtend(destination, sources) {
     if (_.isObject(destination) && _.isObject(sources) || _.isArray(destination) && _.isArray(sources)) {
       _.each(sources, function (val, index) {
         destination[index] = getVal(val, _.has(destination, index) ? destination[index] : null);
@@ -58,7 +59,7 @@
     },
     data: function () {
       return {
-        chart: null
+       // chart: null
       }
     },
     ready() {
@@ -71,7 +72,7 @@
     },
     methods: {
       updateData: function (o,n) {
-        maxExtentd(o, clone(n));
+        maxExtend(o, clone(n));
         this.chart.update()
       }
     },
