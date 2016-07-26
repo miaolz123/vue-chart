@@ -73,9 +73,14 @@ new Vue({
 | Prop | Type | Default |
 | ---- | ---- | ------- |
 | type | String | `type="line"` |
-| data | Object | [DOCS](//www.chartjs.org/docs/#line-chart-data-structure) |
-| options | Object | [DOCS](//www.chartjs.org/docs/#chart-configuration) |
+| data | Object | [DOCS](http://www.chartjs.org/docs/#line-chart-data-structure) |
+| options | Object | [DOCS](http://www.chartjs.org/docs/#chart-configuration) |
 [Chartjs](http://www.chartjs.org/docs/)
+
+# Thanks
+
+- [Chartjs.org](http://www.chartjs.org)
+- [Rob Laverty](https://github.com/roblav96)
 
 # License
 
