@@ -10,7 +10,7 @@ A Powerful and Highspeed Chart Parser for Vue.
 
 
 
-# Instllation
+# Installation
 
 ### Browser globals
 
