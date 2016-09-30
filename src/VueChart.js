@@ -22,7 +22,7 @@ export default {
   data: () => ({
     chart: null,
   }),
-  ready() {
+  mounted() {
     this.chart = new Chart(this.$el, {
       type: this.type,
       data: this.data,
