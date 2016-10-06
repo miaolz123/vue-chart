@@ -6,6 +6,9 @@
 
 A Powerful and Highspeed Chart Parser for Vue.
 
+- **version 1.X.X for vue1.X.X**
+- **version 2.X.X for vue2.X.X**
+
 # Example
 
 [DEMO](https://miaolz123.github.io/vue-chart/) | [CODE](https://github.com/miaolz123/vue-chart/tree/gh-pages)

@@ -1,5 +1,5 @@
 /**
- * vue-chart v1.1.0
+ * vue-chart v2.0.0
  * https://github.com/miaolz123/vue-chart
  * MIT License
  */
