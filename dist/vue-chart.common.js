@@ -101,7 +101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      chart: null
 	    };
 	  },
-	  ready: function ready() {
+	  mounted: function mounted() {
 	    var _this = this;
 
 	    this.chart = new _chart2.default(this.$el, {
