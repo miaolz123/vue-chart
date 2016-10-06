@@ -8,18 +8,20 @@
 </head>
 
 <body>
-  <vue-chart type="doughnut" :data="data"></vue-chart>
-  <br>
-  <p style="text-align:center">
-    REMAIN: {{ data.datasets[0].data[0] }}, LEAVE: {{ data.datasets[0].data[1] }}
-    & Powered by <a href="//github.com/miaolz123/vue-chart" target="_blank">VueChart</a>
-  </p>
+  <div id="app">
+    <vue-chart type="doughnut" :data="data"></vue-chart>
+    <br>
+    <p style="text-align:center">
+      REMAIN: {{ data.datasets[0].data[0] }}, LEAVE: {{ data.datasets[0].data[1] }}
+      & Powered by <a href="//github.com/miaolz123/vue-chart" target="_blank">VueChart</a>
+    </p>
+  </div>
   <script src="dist/vue.js"></script>
   <script src="dist/vue-chart.js"></script>
   <script>
     Vue.use(VueChart);
     var vm = new Vue({
-      el: "body",
+      el: "#app",
       data: {
         data: {
           labels: ["REMAIN", "LEAVE"],
@@ -29,7 +31,7 @@
           }]
         }
       },
-      ready() {
+      mounted() {
         var root = this;
         var refresh = function() {
           var data = root.data.datasets[0].data;
