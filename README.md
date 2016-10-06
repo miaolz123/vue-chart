@@ -8,7 +8,7 @@ A Powerful and Highspeed Chart Parser for Vue.
 
 # Example
 
-
+[DEMO](https://miaolz123.github.io/vue-chart/) | [CODE](https://github.com/miaolz123/vue-chart/tree/gh-pages)
 
 # Installation
 
@@ -81,6 +81,7 @@ new Vue({
 - [ChartJS](http://www.chartjs.org)
 - [Johnny](https://github.com/johnnyGoo)
 - [Rob Laverty](https://github.com/roblav96)
+- [**rockymontana**](https://github.com/rockymontana)
 
 # License
 
