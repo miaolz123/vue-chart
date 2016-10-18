@@ -88,4 +88,4 @@ new Vue({
 
 # License
 
-Copyright (c) 2016 [miaolz123](https://github.com/miaolz123) by [MIT](https://opensource.org/licenses/MIT)
+Copyright (c) 2016 [vue-chart](https://github.com/miaolz123/vue-chart) by [MIT](https://opensource.org/licenses/MIT)
