@@ -79,12 +79,34 @@ new Vue({
 | data | Object | [DOCS](http://www.chartjs.org/docs/#line-chart-data-structure) |
 | options | Object | [DOCS](http://www.chartjs.org/docs/#chart-configuration) |
 
+
+## Todo
+
+| Done | Prop | Type | Required | Description |
+| ---- | ---- | ---- | -------- | ----------- |
+| No | type | String | no | default is `line` |
+| No | datasets | Array[object] | yes | Chart.data.datasets |
+| No | labels | Array[String] | yes | Chart.data.labels |
+| No | xLabels | Array[String] | no | Chart.data.xLabels |
+| No | yLabels | Array[String] | no | Chart.data.yLabels |
+| No | common | Object | no | [Common Chart Configuration](http://www.chartjs.org/docs/#chart-configuration-common-chart-configuration) |
+| No | title | Object | no | [Title Configuration](http://www.chartjs.org/docs/#chart-configuration-title-configuration) |
+| No | legend | Object | no | [Legend Configuration](http://www.chartjs.org/docs/#chart-configuration-legend-configuration) |
+| No | tooltip | Object | no | [Tooltip Configuration](http://www.chartjs.org/docs/#chart-configuration-tooltip-configuration) |
+| No | hover | Object | no | [Hover Configuration](http://www.chartjs.org/docs/#chart-configuration-hover-configuration) |
+| No | animation | Object | no | [Animation Configuration](http://www.chartjs.org/docs/#chart-configuration-animation-configuration) |
+| No | element | Object | no | [Element Configuration](http://www.chartjs.org/docs/#chart-configuration-element-configuration) |
+
+
 # Thanks
 
 - [ChartJS](http://www.chartjs.org)
 - [Johnny](https://github.com/johnnyGoo)
 - [Rob Laverty](https://github.com/roblav96)
 - [**rockymontana**](https://github.com/rockymontana)
+
+
+
 
 # License
 
